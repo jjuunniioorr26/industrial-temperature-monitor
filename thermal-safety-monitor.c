@@ -204,7 +204,8 @@ int main(void) {
 
             case 0:  // MENU
                 printf("\n--- MENU ---");
-                printf("\n1 - Inicializar Sensores (3x4)\n2 - Ver Matriz e Relatorio \n3 - Calcular Medias das Esteiras\n4 - Verificar Alertas\n5 - Inserir novas Temperaturas (Teste)\n6 - Matriz nao limitada\n0 - Sair\n");
+                printf("\n1 - Inicializar Sensores (3x4)\n2 - Ver Matriz e Relatorio \n3 - Calcular Medias das Esteiras\n
+                    4 - Verificar Alertas\n5 - Inserir novas Temperaturas (Teste)\n6 - Matriz nao limitada\n0 - Sair\n");
                 printf("\nEscolha uma opcao: ");
 
                 if (scanf("%d", &opcao) != 1) {
