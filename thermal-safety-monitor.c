@@ -137,14 +137,16 @@ void emitir_relatorio(const PlantaIndustrial *p, const SistemaControle *c) {
 
     printf("\n--- STATUS DOS ATUADORES E MEDIAS ---\n");
     for (int i = 0; i < p->qtd_linhas; i++) {
-        printf("Esteira %d -> Media: %.2f°C | Atuador: %d (%s)\n", 
-               i + 1, p->vetor_medias[i], c->vetor_atuadores[i]);
-        
-        if(c->vetor_atuadores[i] == 1){
+        printf("Esteira %d -> Media: %.2f°C | Atuador: %d (",
+           i + 1, p->vetor_medias[i], c->vetor_atuadores[i]);
+
+        if (c->vetor_atuadores[i] == 1) {
             printf("NORMAL");
         } else {
             printf("BLOQUEADO");
         }
+
+        printf(")\n");
     }
 }
 
