@@ -26,25 +26,25 @@ int alocar_sistema(PlantaIndustrial *p, SistemaControle *c, int M, int N) {
     p->qtd_colunas = N;
 
     // Alocação dinâmica real (Ponteiro para Ponteiro) para a matriz de sensores
-    p->matriz_sensores = (float **)malloc(l * sizeof(float *));
+    p->matriz_sensores = (float **)malloc(M * sizeof(float *));
     if (p->matriz_sensores == NULL) {
         return 0;
     }
 
-    for (int i = 0; i < l; i++) {
-        p->matriz_sensores[i] = (float *)malloc(c_col * sizeof(float));
+    for (int i = 0; i < M; i++) {
+        p->matriz_sensores[i] = (float *)malloc(N * sizeof(float));
         if (p->matriz_sensores[i] == NULL) {
             return 0;
         }
     }
 
     // Alocação dos vetores dinâmicos
-    p->vetor_medias = (float *)malloc(l * sizeof(float));
+    p->vetor_medias = (float *)malloc(M * sizeof(float));
     if (p->vetor_medias == NULL) {
         return 0;
     }
 
-    c->vetor_atuadores = (int *)malloc(l * sizeof(int));
+    c->vetor_atuadores = (int *)malloc(M * sizeof(int));
     if (c->vetor_atuadores == NULL) {
         return 0;
     }
@@ -53,10 +53,10 @@ int alocar_sistema(PlantaIndustrial *p, SistemaControle *c, int M, int N) {
     c->total_alarmes = 0;
     c->limite_critico = 75.0f; 
 
-    for (int i = 0; i < l; i++) {
+    for (int i = 0; i < M; i++) {
         c->vetor_atuadores[i] = 1; // Todos iniciam ligados (Normal)
         p->vetor_medias[i] = 0.0f;
-        for (int j = 0; j < c_col; j++) {
+        for (int j = 0; j < N; j++) {
             p->matriz_sensores[i][j] = 0.0f;
         }
     }
